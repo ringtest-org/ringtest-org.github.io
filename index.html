@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ringtest</title>
+<meta name="description" content="Ringtest: an open benchmark for biomedical peer review.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='4 4 92 92'%3E%3Cstyle%3E.i%7Bstroke:%23262B28%7D.d%7Bfill:%232F5D4E%7D@media (prefers-color-scheme:dark)%7B.i%7Bstroke:%23F4F5F1%7D%7D%3C/style%3E%3Ccircle class='i' cx='50' cy='50' r='40' fill='none' stroke-width='8'/%3E%3Ccircle class='i' cx='50' cy='50' r='22' fill='none' stroke-width='8'/%3E%3Ccircle class='d' cx='65.5' cy='37.3' r='15' fill-opacity='0.78'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/libre-franklin-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  /* Certificate green, soft charcoal ink */
+  :root {
+    --paper: #F4F5F1;
+    --ink: #262B28;
+    --muted: #555B57;
+    --accent: #2F5D4E;
+    --link: #2B5547;
+    --font: "Libre Franklin", "Libre Franklin Fallback", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--paper); }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 38rem;
+    margin: 0 auto;
+    padding: clamp(3rem, 10vh, 7rem) 1.5rem 3rem;
+  }
+  .brand { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 2.75rem; }
+  .brand svg { width: 52px; height: 52px; flex: none; }
+  .brand .ring { stroke: var(--ink); }
+  .brand .dot { fill: var(--accent); }
+  .wordmark {
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .tagline {
+    font-weight: 600;
+    font-size: clamp(1.5rem, 4.2vw, 1.875rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+  }
+  .lede { font-size: 1.125rem; margin: 0 0 1.25rem; }
+  .meta { color: var(--muted); margin: 0; }
+  .meta + .meta { margin-top: 0.25rem; }
+  section { margin-top: 3rem; }
+  .partners {
+    padding: 1.25rem 1.4rem;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+  .partners p { margin: 0; }
+  /* Section labels */
+  h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.9rem;
+  }
+  a { color: var(--link); text-underline-offset: 0.18em; }
+  form { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  input[type="email"] {
+    flex: 1 1 16rem;
+    font: inherit;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--muted);
+    border-radius: 0;
+    padding: 0.65rem 0.8rem;
+  }
+  input[type="email"]::placeholder { color: var(--muted); opacity: 1; }
+  input[type="email"]:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  button {
+    font: inherit;
+    font-weight: 600;
+    color: var(--paper);
+    background: var(--ink);
+    border: 0;
+    border-radius: 0;
+    padding: 0.65rem 1.2rem;
+    cursor: pointer;
+  }
+  button:hover { background: var(--accent); }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .fine { font-size: 0.875rem; color: var(--muted); margin: 0.75rem 0 0; }
+  .status { font-size: 0.95rem; margin: 0.75rem 0 0; min-height: 1.5em; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  footer { max-width: 38rem; margin: 0 auto; padding: 0 1.5rem 3rem; font-size: 0.875rem; color: var(--muted); }
+  footer p { margin: 0 0 0.25rem; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <svg viewBox="5 5 90 90" role="img" aria-label="Ringtest logo">
+      <circle class="ring" cx="50" cy="50" r="40" fill="none" stroke-width="6"/>
+      <circle class="ring" cx="50" cy="50" r="22" fill="none" stroke-width="6"/>
+      <circle class="dot" cx="65.5" cy="37.3" r="15" fill-opacity="0.78"/>
+    </svg>
+    <p class="wordmark">Ringtest</p>
+  </div>
+
+  <h1 class="tagline">An open benchmark for biomedical peer review</h1>
+
+  <p class="lede">In a ring test, labs analyze the same samples so their results can be compared against a reference. Ringtest uses shared test cases, transparent scoring, and open results to do the same for peer review.</p>
+  <p class="meta">Test protocols, code, and retired test cases will be released under open licenses.</p>
+  <p class="meta">First release planned for early 2027.</p>
+
+  <section class="partners" aria-labelledby="partners-h">
+    <h2 id="partners-h" class="sr-only">Design partners</h2>
+    <p>Seeking design partners to shape the test cases and error taxonomy. Please reach out to <a href="mailto:hello@ringtest.org">hello@ringtest.org</a>.</p>
+  </section>
+
+  <section aria-labelledby="signup-h">
+    <h2 id="signup-h">Get release announcements</h2>
+    <form id="signup" action="https://buttondown.com/api/emails/embed-subscribe/ringtest-org" method="post">
+      <label for="email" class="sr-only">Email address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.org" autocomplete="email" required>
+      <input type="hidden" name="embed" value="1">
+      <button type="submit">Notify me</button>
+    </form>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <p class="fine">Used only for Ringtest release announcements. Unsubscribe at any time.</p>
+  </section>
+</main>
+<footer>
+  <p>Ringtest is led by <a href="https://bsky.app/profile/jessicapolka.bsky.social">Jessica Polka</a>.</p>
+  <p>hello@ringtest.org</p>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('signup');
+    var status = document.getElementById('status');
+    var host = location.hostname;
+    var live = /(^|\.)ringtest\.org$/.test(host) || /\.github\.io$/.test(host);
+
+    // Buttondown redirects back here with ?subscribed after a signup
+    if (/[?&]subscribed\b/.test(location.search)) {
+      status.textContent = 'Check your inbox to confirm your subscription.';
+      try { history.replaceState(null, '', location.pathname); } catch (e) {}
+      form.scrollIntoView({ block: 'center' });
+    }
+
+    form.addEventListener('submit', function (e) {
+      if (!live) {
+        e.preventDefault();
+        status.textContent = 'Preview only: signup works once the page is live on ringtest.org.';
+      }
+    });
+  })();
+</script>
+</body>
+</html>
